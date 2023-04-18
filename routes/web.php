@@ -21,6 +21,10 @@ Route::get('/', function () {
     return redirect('admin');
 });
 
+Route::get('/{id}', function ($id) {
+    $streaming = App\Models\Streaming::findOrFail($id);
+    return view('live', compact('streaming'));
+});
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
